@@ -127,6 +127,18 @@ const todoSlice = createSlice({
             state.loading = false
             state.error = action.error.message || "Error occured"
         });
+        builder.addCase(updateTodo.pending, (state) => {
+            state.loading = true
+        });
+        builder.addCase(updateTodo.fulfilled, (state, action: PayloadAction<Todo>) => {
+            state.loading = false
+            state.todos = state.todos.map(todo => action.payload.id === todo.id ? { ...todo, todo: action.payload.todo } : todo)
+            state.error = ""
+        });
+        builder.addCase(updateTodo.rejected, (state, action) => {
+            state.loading = false
+            state.error = action.error.message || "Error occured"
+        });
     }
 })
 

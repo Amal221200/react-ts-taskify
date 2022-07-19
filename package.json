@@ -10,6 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/lab": "^5.0.0-alpha.91",
+    "@mui/material": "^5.9.1",
     "@reduxjs/toolkit": "^1.8.3",
     "all": "^0.0.0",
     "json-server": "^0.17.0",

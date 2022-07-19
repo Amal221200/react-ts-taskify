@@ -58,7 +58,8 @@
 	padding: 20px;
 	margin-top: 15px;
 	transition: 0.2s;
-	background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg");
+	background-image: url("../assets/crumpled-yellow-paper-background-close-up_60487-2390.webp");
+	/* background-image: url("https://img.freepik.com/free-photo/crumpled-yellow-paper-background-close-up_60487-2390.jpg?size=626&ext=jpg"); */
   }
 
   .todos__single:hover {
