@@ -2,11 +2,13 @@
   "todos": [
     {
       "id": 28,
-      "todo": "Hello there!"
+      "todo": "Hello there!",
+      "isDone": false
     },
     {
       "id": 31,
-      "isDone": false
+      "isDone": false,
+      "todo": "dsla;"
     },
     {
       "todo": ",mascns",

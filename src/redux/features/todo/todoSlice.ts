@@ -36,26 +36,26 @@ export const addTodo = createAsyncThunk('todos/addTodo', async (todo: string) =>
     return data
 })
 
-export const doneTodo = createAsyncThunk('todos/doneTodo', async ({ id, isDone }: { id: number, isDone: boolean }) => {
-    const response = await fetch(`http://localhost:5000/todos/${id}`, {
+export const doneTodo = createAsyncThunk('todos/doneTodo', async (itodo: Todo) => {
+    const response = await fetch(`http://localhost:5000/todos/${itodo.id}`, {
         headers: {
             'Content-Type': 'application/json'
         },
         method: 'PUT',
-        body: JSON.stringify({ id, isDone: !isDone })
+        body: JSON.stringify({ ...itodo, isDone: !itodo.isDone })
     })
     const data = await response.json()
 
     return data
 })
 
-export const updateTodo = createAsyncThunk('todos/updateTodo', async ({ id, todo }: { id: number, todo: string }) => {
-    const response = await fetch(`http://localhost:5000/todos/${id}`, {
+export const updateTodo = createAsyncThunk('todos/updateTodo', async (updtodo: Todo) => {
+    const response = await fetch(`http://localhost:5000/todos/${updtodo.id}`, {
         headers: {
             'Content-Type': 'application/json'
         },
         method: 'PUT',
-        body: JSON.stringify({ id, todo })
+        body: JSON.stringify({ ...updtodo, todo: updtodo.todo })
     })
     const data = await response.json()
     return data

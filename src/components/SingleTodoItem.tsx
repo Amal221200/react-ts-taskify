@@ -13,13 +13,9 @@ const SingleTodoItem: React.FC<SingleTodoItem> = ({ todo }) => {
     const [editTodo, setEditTodo] = useState<string>(todo.todo)
     const dispatch = useAppDispatch()
 
-    const handleEdit = (e: React.FormEvent, id: number) => {
+    const handleEdit = (e: React.FormEvent, todo: Todo) => {
         e.preventDefault()
-        const payload = {
-            id,
-            todo: editTodo
-        }
-        dispatch(updateTodo(payload))
+        dispatch(updateTodo(todo))
         setEdit(false)
     }
 
@@ -27,8 +23,8 @@ const SingleTodoItem: React.FC<SingleTodoItem> = ({ todo }) => {
         dispatch(deleteTodo(id))
     }
 
-    const handleDone = ({ id, isDone }: { id: number, isDone: boolean }) => {
-        dispatch(doneTodo({ id, isDone }))
+    const handleDone = (todo: Todo) => {
+        dispatch(doneTodo(todo))
     }
 
     const inputRef = useRef<HTMLInputElement>(null)
@@ -39,7 +35,7 @@ const SingleTodoItem: React.FC<SingleTodoItem> = ({ todo }) => {
 
     return (
             <form className='todos__single' onSubmit={(e) => {
-                handleEdit(e, todo.id!)
+                handleEdit(e, todo)
             }}>
                 {
                     edit ? (
@@ -58,7 +54,7 @@ const SingleTodoItem: React.FC<SingleTodoItem> = ({ todo }) => {
                         }
                     }}><AiFillEdit /></span>
                     <span className="icon" onClick={(e) => { handleDelete(todo.id!) }}><AiFillDelete /></span>
-                    <span className="icon" onClick={(e) => { handleDone({ id: todo.id!, isDone: todo.isDone }) }}><MdDone /></span>
+                    <span className="icon" onClick={(e) => { handleDone(todo) }}><MdDone /></span>
                 </div>
             </form>
         )
